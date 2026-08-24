@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valdiney Capistrano | Imóveis em Lucas do Rio Verde-MT</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            400: '#facc15',
+                            500: '#eab308',
+                            600: '#ca8a04',
+                        },
+                        darkbg: '#090d16',
+                        cardbg: '#111827'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-darkbg text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- CABEÇALHO -->
+    <header class="sticky top-0 z-50 glass">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="bg-gradient-to-tr from-amber-500 to-yellow-300 p-2.5 rounded-xl text-slate-950 font-bold">
+                    <i data-lucide="building" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <span class="text-lg sm:text-xl font-bold tracking-tight block text-white">VALDINEY CAPISTRANO</span>
+                    <span class="text-[10px] sm:text-xs text-amber-400 font-medium tracking-wider uppercase block">
+                        CRECI MT 15368 | CNAI 43379
+                    </span>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <a href="https://instagram.com/valdiney_corretor_lrv" target="_blank" class="p-2 text-slate-400 hover:text-amber-400 transition-colors" title="Instagram">
+                    <i data-lucide="instagram" class="w-5 h-5"></i>
+                </a>
+                <a href="https://wa.me/5565999337268?text=Ol%C3%A1%20Valdiney,%20gostaria%20de%20atendimento." target="_blank" class="hidden sm:flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-5 py-2.5 rounded-full transition-all shadow-lg shadow-amber-500/10">
+                    <i data-lucide="phone" class="w-4 h-4"></i>
+                    Contato Direto
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-12 pb-16 overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-15 bg-[radial-gradient(#eab308_1px,transparent_1px)] [background-size:20px_20px]"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20 mb-6">
+                <i data-lucide="award" class="w-3.5 h-3.5"></i> Perito Avaliador & Corretor Especialista
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4 leading-tight">
+                Curadoria Imobiliária Exclusiva em <br class="hidden sm:inline"/> Lucas do Rio Verde - MT
+            </h1>
+            <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto mb-10">
+                Segurança jurídica, avaliação precisa e os melhores negócios imobiliários para compra, venda e investimento.
+            </p>
+
+            <!-- FILTROS -->
+            <div class="glass max-w-3xl mx-auto p-4 sm:p-5 rounded-2xl shadow-2xl text-left border border-slate-800">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div>
+                        <label class="block text-[11px] font-medium text-slate-400 mb-1 uppercase tracking-wider">Tipo</label>
+                        <select id="filter-type" onchange="filterProperties()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500">
+                            <option value="all">Todos os Tipos</option>
+                            <option value="apartamento">Apartamento</option>
+                            <option value="casa">Casa</option>
+                            <option value="terreno">Terreno</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-medium text-slate-400 mb-1 uppercase tracking-wider">Finalidade</label>
+                        <select id="filter-purpose" onchange="filterProperties()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500">
+                            <option value="all">Venda & Aluguel</option>
+                            <option value="venda">Venda</option>
+                            <option value="aluguel">Aluguel</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-medium text-slate-400 mb-1 uppercase tracking-wider">Buscar por Bairro</label>
+                        <div class="relative">
+                            <input type="text" id="filter-search" onkeyup="filterProperties()" placeholder="Ex: Bandeirantes..." class="w-full bg-slate-900 border border-slate-800 rounded-xl pl-9 pr-3 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500">
+                            <i data-lucide="search" class="w-3.5 h-3.5 text-slate-500 absolute left-3 top-3"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LISTA DE IMÓVEIS -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+        <div class="flex items-center justify-between mb-8">
+            <div>
+                <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">Oportunidades em Destaque</h2>
+                <p class="text-slate-400 text-xs sm:text-sm">Imóveis selecionados com excelente potencial de valorização</p>
+            </div>
+        </div>
+
+        <!-- GRID -->
+        <div id="properties-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Inserido dinamicamente via JS -->
+        </div>
+    </main>
+
+    <!-- ANUNCIE SEU IMÓVEL (CAPTURA DE PROPRIETÁRIOS) -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+        <div class="glass rounded-3xl p-6 sm:p-10 border border-slate-800 relative overflow-hidden">
+            <div class="max-w-2xl">
+                <span class="text-xs font-semibold text-amber-400 uppercase tracking-widest block mb-2">Para Proprietários</span>
+                <h3 class="text-2xl sm:text-3xl font-bold text-white mb-3">Quer vender ou avaliar o seu imóvel?</h3>
+                <p class="text-slate-400 text-sm mb-6">
+                    Como Perito Avaliador Imobiliário (CNAI 43379), garanto uma precificação justa de mercado e estratégias de divulgação de alta visibilidade.
+                </p>
+                <form onsubmit="handleOwnerForm(event)" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <input type="text" id="owner-name" placeholder="Seu Nome" required class="bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500">
+                    <input type="text" id="owner-type" placeholder="Tipo do Imóvel e Bairro" required class="bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500">
+                    <button type="submit" class="sm:col-span-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-3 rounded-xl text-xs flex items-center justify-center gap-2 transition-all">
+                        <i data-lucide="send" class="w-4 h-4"></i> Solicitar Avaliação / Anunciar Imóvel
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="bg-slate-950 border-t border-slate-900 py-10">
+        <div class="max-w-7xl mx-auto px-4 text-center sm:text-left flex flex-col sm:flex-row justify-between items-center gap-6">
+            <div>
+                <p class="text-white font-bold text-base">Valdiney Capistrano</p>
+                <p class="text-slate-500 text-xs">Corretor de Imóveis & Perito Avaliador | Lucas do Rio Verde - MT</p>
+                <p class="text-slate-600 text-[11px] mt-1">CRECI MT 15368 | CNAI 43379</p>
+            </div>
+            <div class="flex items-center gap-4 text-xs text-slate-400">
+                <a href="https://instagram.com/valdiney_corretor_lrv" target="_blank" class="hover:text-amber-400 flex items-center gap-1">
+                    <i data-lucide="instagram" class="w-4 h-4"></i> @valdiney_corretor_lrv
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOTÃO FLUTUANTE WHATSAPP -->
+    <a href="https://wa.me/5565999337268?text=Ol%C3%A1%20Valdiney,%20vim%20pelo%20site!" target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-400 text-slate-950 p-4 rounded-full shadow-2xl flex items-center justify-center transition-transform hover:scale-110">
+        <i data-lucide="message-circle" class="w-6 h-6"></i>
+    </a>
+
+    <!-- SCRIPT DE DADOS -->
+    <script>
+        const properties = [
+            {
+                id: 1,
+                title: "Apartamento Sol da Manhã - Bairro Bandeirantes",
+                type: "apartamento",
+                purpose: "venda",
+                price: "R$ 520.000",
+                location: "Bairro Bandeirantes, Lucas do Rio Verde - MT",
+                badge: "Oportunidade Exclusiva",
+                bedrooms: 2,
+                bathrooms: 1,
+                garage: 1,
+                area: 54,
+                floor: "3º Andar (Sol da Manhã)",
+                amenities: ["Piscina", "Pizza Club", "Sala de Jogos", "Área Social Ampla"],
+                image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80"
+            }
+        ];
+
+        function renderProperties(list) {
+            const grid = document.getElementById('properties-grid');
+            grid.innerHTML = '';
+
+            if (list.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-500 text-sm">Nenhum imóvel encontrado para este filtro.</div>`;
+                return;
+            }
+
+            list.forEach(item => {
+                const waMessage = encodeURIComponent(`Olá Valdiney! Tenho interesse no ${item.title} (${item.price}). Poderia me passar mais detalhes e agendar uma visita?`);
+                
+                const amenitiesHTML = item.amenities.map(a => `<span class="bg-slate-800 text-slate-300 text-[10px] px-2.5 py-1 rounded-md border border-slate-700/50">${a}</span>`).join('');
+
+                const card = `
+                    <div class="glass rounded-2xl overflow-hidden border border-slate-800 hover:border-amber-500/40 transition-all flex flex-col justify-between group">
+                        <div>
+                            <div class="relative aspect-[16/10] overflow-hidden">
+                                <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <span class="absolute top-3 left-3 bg-amber-500 text-slate-950 text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">
+                                    ${item.badge}
+                                </span>
+                            </div>
+                            <div class="p-5">
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="text-[11px] text-amber-400 font-semibold tracking-wider uppercase">${item.location}</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-white mb-2 leading-snug">${item.title}</h3>
+                                <p class="text-2xl font-extrabold text-white mb-4">${item.price}</p>
+                                
+                                <div class="grid grid-cols-3 gap-2 py-3 border-y border-slate-800 text-xs text-slate-300 mb-4">
+                                    <div class="flex items-center gap-1.5">
+                                        <i data-lucide="bed" class="w-4 h-4 text-amber-400"></i>
+                                        <span>${item.bedrooms} Qts</span>
+                                    </div>
+                                    <div class="flex items-center gap-1.5">
+                                        <i data-lucide="car" class="w-4 h-4 text-amber-400"></i>
+                                        <span>${item.garage} Vaga</span>
+                                    </div>
+                                    <div class="flex items-center gap-1.5">
+                                        <i data-lucide="maximize" class="w-4 h-4 text-amber-400"></i>
+                                        <span>${item.area} m²</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap gap-1.5 mb-2">
+                                    ${amenitiesHTML}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-5 pt-0">
+                            <a href="https://wa.me/5565999337268?text=${waMessage}" target="_blank" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-3 rounded-xl text-xs flex items-center justify-center gap-2 transition-all shadow-lg shadow-amber-500/10">
+                                <i data-lucide="calendar" class="w-4 h-4"></i> Agendar Visita pelo WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += card;
+            });
+            lucide.createIcons();
+        }
+
+        function filterProperties() {
+            const type = document.getElementById('filter-type').value;
+            const purpose = document.getElementById('filter-purpose').value;
+            const search = document.getElementById('filter-search').value.toLowerCase();
+
+            const filtered = properties.filter(item => {
+                const matchType = type === 'all' || item.type === type;
+                const matchPurpose = purpose === 'all' || item.purpose === purpose;
+                const matchSearch = item.title.toLowerCase().includes(search) || item.location.toLowerCase().includes(search);
+                return matchType && matchPurpose && matchSearch;
+            });
+
+            renderProperties(filtered);
+        }
+
+        function handleOwnerForm(e) {
+            e.preventDefault();
+            const name = document.getElementById('owner-name').value;
+            const type = document.getElementById('owner-type').value;
+            const msg = encodeURIComponent(`Olá Valdiney! Meu nome é ${name}. Tenho um imóvel (${type}) e gostaria de uma avaliação para anunciar com você.`);
+            window.open(`https://wa.me/5565999337268?text=${msg}`, '_blank');
+        }
+
+        renderProperties(properties);
+    </script>
+</body>
+</html>
